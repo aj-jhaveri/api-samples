@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>jQuery OMDB API Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h2>Recent Movies I've Seen</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Movie Name</th>
+          <th scope="col">Year</th>
+          <th scope="col">Actors</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    var movie = "1917";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=9bb6eab4";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var tRow = $("<tr>");
+      var titleTd = $("<td>").text(response.Title);
+      var yearTd = $("<td>").text(response.Year);
+      var actorsTd = $("<td>").text(response.Actors);        
+      tRow.append(titleTd, yearTd, actorsTd);
+      $("tbody").append(tRow);
+    });
+
+    var movie = "Jumanji The Next Level";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=9bb6eab4";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var tBody = $("tbody");
+      var tRow = $("<tr>");
+      var titleTd = $("<td>").text(response.Title);
+      var yearTd = $("<td>").text(response.Year);
+      var actorsTd = $("<td>").text(response.Actors);
+      tRow.append(titleTd, yearTd, actorsTd);
+      tBody.append(tRow);
+    });
+
+    var movie = "Star Wars: Episode IX - The Rise of Skywalker";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=9bb6eab4";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var tBody = $("tbody");
+      var tRow = $("<tr>");
+      var titleTd = $("<td>").text(response.Title);
+      var yearTd = $("<td>").text(response.Year);
+      var actorsTd = $("<td>").text(response.Actors);
+      tRow.append(titleTd, yearTd, actorsTd);
+      tBody.append(tRow);
+    });
+  </script>
+</body>
+
+</html>
